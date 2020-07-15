@@ -2673,6 +2673,63 @@ class WebDriver extends CodeceptionModule implements
     }
 
     /**
+     * Mouse click and hold.
+     * If $element is provided, move to the middle of the element first.
+     *
+     * @param string $source
+     */
+    public function clickAndHold($source = null)
+    {
+        $snodes = $this->matchFirstOrFail($this->getBaseElement(), $source);
+        $action = new WebDriverActions($this->webDriver);
+
+        $action->clickAndHold($snodes);
+    }
+
+    /**
+     * Mouse move by offset.
+     *
+     * @param int $x_offset
+     * @param int $y_offset
+     */
+    public function moveByOffset($x_offset, $y_offset)
+    {
+        $action = new WebDriverActions($this->webDriver);
+        $action->moveByOffset($x_offset, $y_offset);
+    }
+
+    /**
+     * Move to the middle of the given WebDriverElement.
+     * Extra shift, calculated from the top-left corner of the element, can be set by passing $x_offset and $y_offset
+     * parameters.
+     *
+     * @param string $source
+     * @param int $x_offset
+     * @param int $y_offset
+     */
+    public function moveToElement($source, $x_offset = null, $y_offset = null)
+    {
+        $snodes = $this->matchFirstOrFail($this->getBaseElement(), $source);
+        $action = new WebDriverActions($this->webDriver);
+
+        $action->moveToElement($snodes, $x_offset, $y_offset);
+    }
+
+    /**
+     * Release the mouse button.
+     * If $element is provided, move to the middle of the element first.
+     *
+     * @param string $source
+     */
+    public function release($source = null)
+    {
+        $snodes = $this->matchFirstOrFail($this->getBaseElement(), $source);
+        $action = new WebDriverActions($this->webDriver);
+
+        $action->release($snodes);
+    }
+
+    /**
      * Move mouse over the first element matched by the given locator.
      * If the first parameter null then the page is used.
      * If the second and third parameters are given,

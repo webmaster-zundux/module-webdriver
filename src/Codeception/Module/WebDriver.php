@@ -2673,6 +2673,26 @@ class WebDriver extends CodeceptionModule implements
     }
 
     /**
+     * Mouse click.
+     * If $element is provided, move to the middle of the element first.
+     *
+     * @param null $source
+     * @throws ModuleException
+     */
+    public function justClick($source = null)
+    {
+        $snodes = null;
+
+        if($source !== null) {
+            $snodes = $this->matchFirstOrFail($this->getBaseElement(), $source);
+        }
+
+        $action = new WebDriverActions($this->webDriver);
+
+        $action->click($snodes);
+    }
+
+    /**
      * Mouse click and hold.
      * If $element is provided, move to the middle of the element first.
      *

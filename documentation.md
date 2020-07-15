@@ -936,6 +936,20 @@ $I->dragAndDrop('#drag', '#drop');
 
  * `param string` $source (CSS ID or XPath)
  * `param string` $target (CSS ID or XPath)
+ 
+ ### dragAndDropBy
+  
+ Performs a mouse drag-and-drop operation by offset.
+ 
+ ``` php
+ <?php
+ $I->dragAndDrop('#drag', '#drop');
+ ?>
+ ```
+ 
+  * `param string` $source (CSS ID or XPath)
+  * `param int` $x_offset (x offset)
+  * `param int` $y_offset (y offset)
 
 
 ### executeAsyncJS

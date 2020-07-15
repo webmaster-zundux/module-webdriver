@@ -2658,6 +2658,21 @@ class WebDriver extends CodeceptionModule implements
     }
 
     /**
+     * Drag $source and drop by offset ($x_offset, $y_offset).
+     *
+     * @param string $source
+     * @param int $x_offset
+     * @param int $y_offset
+     */
+    public function dragAndDropBy($source, $x_offset, $y_offset)
+    {
+        $snodes = $this->matchFirstOrFail($this->getBaseElement(), $source);
+        $action = new WebDriverActions($this->webDriver);
+
+        $action->dragAndDropBy($snodes, $x_offset, $y_offset);
+    }
+
+    /**
      * Move mouse over the first element matched by the given locator.
      * If the first parameter null then the page is used.
      * If the second and third parameters are given,
